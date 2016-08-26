@@ -1,4 +1,4 @@
-from grid import grid_life
+from grid import grid_life,runner
 def test_grid():
     grid=grid_life([[1,1],[1,1]])
     assert grid.s==2
@@ -12,5 +12,10 @@ def test_num_neighboours():
 def test_apply_rules():
     grid=grid_life([[1,0,1],[1,1,1],[0,0,1]])
     assert grid.apply_rules()==([[1,0,1],[1,0,1],[0,0,1]])
-#def test_printer():
+def test_size():
+    grid=grid_life([[1,1,1],[1,0,1],[0,0,1]])
+    assert grid.sizee()==3
+def runner():
+    result=runner([[1,1,1],[0,0,1],[1,0,1]])
+    assert runner.r2==([[0,1,1],[1,0,1],[0,1,0]])
 

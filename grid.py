@@ -1,22 +1,21 @@
+from time import sleep
 class grid_life():
-    life_grid=[]
-    result=[]
                               
         
     def __init__(self,ip):
-        global life_grid
-        global result
-        result=[]
-        life_grid= ip
+        #global life_grid
+        #global result
+        self.result=[]
+        self.life_grid= ip
         self.s=self.sizee()
         for i in range(self.s):
-            result.append([0]*(self.s))
+            self.result.append([0]*(self.s))
         
     def sizee(self):
-        return(len(life_grid[0]))
+        return(len(self.life_grid[0]))
         
     def is_alive(self,x,y):
-        if life_grid[x][y]==1:
+        if self.life_grid[x][y]==1:
             return True
         else:
             return False
@@ -27,7 +26,7 @@ class grid_life():
             j=yy-1
             for j in range(yy-1,yy+2):
                 if i>=0 and j>=0 and i<(self.s) and j<(self.s):
-                    if life_grid[i][j]==1:
+                    if self.life_grid[i][j]==1:
                         count += 1
         return count
         
@@ -38,12 +37,12 @@ class grid_life():
                 if self.is_alive(m,n)==True:
                     num-=1
                     if num in (2,3):
-                        result[m][n]=1
+                        self.result[m][n]=1
                 else:
                     if num==3:
-                        result[m][n]=1
+                        self.result[m][n]=1
         
-        return(result)
+        return(self.result)
 
     def printer(self,r):
         print "\n"
@@ -55,3 +54,16 @@ class grid_life():
                         print '.',
             print "\n"
         
+class runner():
+    def __init__(self,r1):
+        r2=[]
+        while r1 != r2:
+            B=grid_life(r1)
+            r1=(B.apply_rules())
+            sleep(1)
+            B.printer(r1)
+            B=grid_life(r1)
+            r2=(B.apply_rules())
+            sleep(1)
+            B.printer(r2)
+        print ("O V E R")
