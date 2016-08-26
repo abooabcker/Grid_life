@@ -1,5 +1,7 @@
 # Grid_life
 Grid life game
+to run grid.runner([[],[].......])
+
 which is a game applying some rules into a grid which containe only 1's and 0's
 Rules
 
